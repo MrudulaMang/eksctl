@@ -1,0 +1,11 @@
+#session 56
+
+apiversion: v1
+kind: Pod
+Metadata:
+ name: nginx
+ namespace: roboshop
+spec:
+ containers:
+ - name: nginx 
+   image: nginx
