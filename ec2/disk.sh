@@ -16,14 +16,19 @@ sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
+            # . Use su - username
+            # su - username or use newgrp <group>
+            # ✔️ No need to relogin
+            # ✔️ Reloads full login environment
+            # ✔️ Picks up new groups
 # do docker login
 
 
 # ################  EKSCTL session 55
 
 # # for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
-# ARCH=amd64
-# PLATFORM=$(uname -s)_$ARCH
+# ARCH=amd64 ---- means the system or binary is built for 64-bit x86 architecture (Intel/AMD processors).
+# PLATFORM=$(uname -s)_$ARCH ----did not use this command
 
 # curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 
