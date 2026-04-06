@@ -8,7 +8,7 @@ resource "aws_instance" "docker_roboshop"{
  }
  user_data = file("disk.sh") 
  tags = {
-    Name    = "docker"
+    Name    = "workstation"
     Project = "roboshop"
  }
 }
