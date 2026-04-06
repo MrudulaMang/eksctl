@@ -1,0 +1,14 @@
+apiVerison: v1
+kind: Service
+metadata:
+  name: nginx
+spec:
+  selector: #this service should select which pods
+    #labels of the pods which u want to atach , here i gave labels.yaml labels
+    project: roboshop
+    component: frontend
+    environment: dev
+  ports
+    protocol: tcp
+    port: 80 #service
+    targetport: 80 #container 

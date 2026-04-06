@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: resources
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      resources:
+        requests:
+          memory: 64Mi #RAM Mi → Mebi (binary unit) 64 Mi = 64 × 1024 × 1024 bytes :Minimum guaranteed memory
+          cpu: 100M Maximum allowed memory
+        limits:
+          memory: 128Mi
+          cpu: 150M    
+
+
+
+#  #Real DevOps behavior
+# Scheduler uses requests
+# Kernel enforces limits
+
+# If container exceeds limit:
+# 👉 Killed (OOMKilled)
+
+# 🔹 Option 1: OOMKilled debugging (very important)
+# Why containers crash due to memory
+# How to detect (kubectl describe pod)
+# How to fix properly
