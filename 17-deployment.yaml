@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+    name: nginx-dp
+    labels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: frontend
+        component: frontend    
+    spec:
+      containers:
+        -name:  nginx
+        image:  nginx
+
+
+
+#pod name
+#<deployment-name>-<replicaset-hash>-<pod-id>
+# 🔥 1. Create Deployment
+# 👉 From YAML
+# k apply -f deployment.yaml
+# 👉 Quick create (imperative)
+# k create deployment my-app --image=nginx
+
+# 🔍 2. View Deployments
+# k get deploy
+
+# 👉 Rollout history
+# k rollout history deploy/my-app
+# 👉 Rollback (🔥 important)
+# k rollout undo deploy/my-app
+# 👉 Check rollout status
+# k rollout status deploy/my-app
+
+# 👉 Update image
+# k set image deploy/my-app nginx=nginx:1.25
+# 📈 4. Scale Deployment
+# k scale deploy my-app --replicas=5
+# 🔄 5. Rolling Updates
+
+# 🔥 3. Describe (DEBUG GOLD)
+# k describe deploy my-app
+# 👉 Shows:
+# strategy
+# replicas
+# events (very important)
+
+
+# Rollback to specific revision
+# k rollout undo deploy/my-app --to-revision=2
+
+# 🧠 7. Patch (advanced, interview-level)
+# k patch deploy my-app -p '{"spec":{"replicas":3}}'
+# 👉 Pods of Deployment
+# k get pods -l app=my-app
+# 🔥 10. Logs (real debugging)
+# k logs <pod-name>
+# ⚡ 11. Watch live changes
+# k get deploy -w
+# 🧠 12. Export YAML (useful trick)
+# k get deploy my-app -o yaml
+# 💣 Real SRE Debug Flow (memorize this)
+
+# When Deployment is broken:
+
+# k get deploy
+# k describe deploy my-app
+# k get rs
+# k get pods
+# k describe pod <pod>
+# k logs <pod>
+# ⚡ Power combo (used daily)
+# k get all

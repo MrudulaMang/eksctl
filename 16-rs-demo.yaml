@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Replicaset
+metadata:
+    name: nginx-rs
+    labels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      project: roboshop
+      tier: frontend
+      component: frontend
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        tier: frontend
+        component: frontend    
+    spec:
+      containers:
+        -name:  nginx
+        image:  nginx
+
+
+# # alias k=kubectl
+
+# #kubectl apply -f 16-rs-demo.yaml
+# kubectl get pods
+#  --- podnames given my replicaset- imagename + 5 random characters
+# kubectl get rs
+# kubectl get rs -A -> all namespaces
+# kubectl get rs --show-labels
+# kubectl get rs -l app=my-app -> Filter by label
+# kubectl describe rs my-replicaset
+# kubectl edit rs nginx
+# See pods managed by ReplicaSet
+# kubectl get pods -l app=my-app
+
+#   Pro tip (you’ll use this a lot)
+#   kubectl get rs -w
+
+#   👉 Watch ReplicaSet in real-time
+#   (super useful during scaling or failures)
+
+#       Real debugging workflow (SRE style)
+
+#     When something is wrong:
+
+#     kubectl get rs
+#     kubectl describe rs my-replicaset
+#     kubectl get pods -l app=my-app
+#     kubectl describe pod <pod-name>
+
+#     👉 This chain tells you:
+
+#     Is ReplicaSet healthy?
+#     Is it creating pods?
+#     Are pods failing?
