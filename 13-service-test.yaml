@@ -10,7 +10,10 @@ spec:
    command: ["sleep","1000"]
 
 
-
+# test
+#  kubectl exec -it servicetest --nslookup labels
+# kubectl get endpoints <service>
+# -----------------------
 # For bidirectional communication, each component that needs to be accessed 
 # should be exposed via its own Service, enabling stable DNS-based access.
 

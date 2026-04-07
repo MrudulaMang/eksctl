@@ -18,7 +18,7 @@ sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
             # . Use su - username
             # su - username or use newgrp <group>
-            # ✔️ No need to relogin
+            # ✔️ No need to relogin into ec2 after assigning the ec2-user to docker grp
             # ✔️ Reloads full login environment
             # ✔️ Picks up new groups
 # do docker login
